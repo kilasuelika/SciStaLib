@@ -1,0 +1,2 @@
+/mnt/f/KnowledgeCenter/PT/Projects/SciStaEBD/CMakeFiles/rebuild_cache.dir
+/mnt/f/KnowledgeCenter/PT/Projects/SciStaEBD/CMakeFiles/edit_cache.dir

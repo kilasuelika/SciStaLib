@@ -1,0 +1,96 @@
+\chapter{Optimization and Equation System Solving(Solve)}
+\section{Usage}
+
+\subsection{Optimization}
+\subsubsection{Alogorithms}
+There are r types of algorithms: unbounded, bounded, linear constrained and nonlinear contrained. Each algorithm is implemented in an object and we pass problem functions to these objects. We use a problem function to return all related information including function value, gradients, nonlinear constraint values etc. To return these information, we use a tuple as return type.
+
+A list of algorithms:
+
+\begin{enumerate}
+	\item Unbounded. Heuristic: \cd{GA},  \cd{PSO}.
+	\item Bounded: 
+	\item Linear Constrained: 
+\end{enumerate}
+
+\subsubsection{Variable Types}
+\begin{enumerate}
+	\item \textbf{x, y, gradient} are forced to be \cd{VectorXd} type and \textbf{hessian} are forced to be \cd{MatrixXd} type. If \textbf{x,y} of objective function or nonlinear constraints are scalars, we still use a length one \cd{VectorXd} to store it. One advantage of this is that we don't have to deal with number of variables. Note that \cd{VectorXd} is a \textbf{column} vector.
+	
+	If \textbf{y} is a vector of length more than one. One can set \cd{SolveOption.type} to value either of "least square" or "norm". For "norm", we optimize norm of \textbf{y}.
+	
+	\item One can pass external data by pointer using template.
+\end{enumerate}
+
+\subsubsection{GA  Examples}
+\begin{lstlisting}
+//Objective function.
+double fun1(VectorXd x){
+	return pow(x[0],2)+pow(x[1],2);
+};
+
+GA ga_optimizer("min", 2);
+
+//Following are some  non-necessary settings. They have default values.
+ga_optimizer.set_population();
+
+
+
+VectorXd x0;
+x0<<10,10;
+auto flag=ga_optimizer.solve(fun1, x0);
+cout<<x0<<endl;
+
+
+\end{lstlisting}
+
+
+\subsubsection{Write An Optimization Problem}
+\begin{lstlisting}
+class prob: ProblemBase<VectorXd>{
+	
+}
+\end{lstlisting}
+
+\subsubsection{Constrained Optimization}
+
+
+\subsection{Nonlinear System}
+\begin{lstlisting}
+
+\end{lstlisting}
+
+\section{Common Objects}
+\subsection{SolveOption}
+
+\subsection{SolveResult}
+
+\section{Solve optimization problems}
+\subsection{Choose A Solver}
+If a solver requires gradient and hessian, however they are not provided, then default difference approximation will be used.
+
+\begin{itemize}
+	\item \textbf{Special}: \cd{QPSolver}(Constrained QP)
+	\item \textbf{Unconstrained}:
+	\item \textbf{Linear inequality constrained}:\cd{LCOBYQASolver}(doesn't use gradient and hessian).
+	\item \texbt{Nonlinear constrained}:\cd{LSSQPSolver}(Large scale SQP).
+	\item \textbf{Nonlinear least square}:
+	\item \textbf{Evolutionary}:\cd{DESolver}.
+	\item \textbf{Heuristic Method}: \cd{PSOSolver}.
+\end{itemize}
+\subsection{SolverBase}
+
+\subsection{QPSolve}
+\cd{QPSolve} is a basic component of many other solvers. It's not a derived class of \cd{SolverBase}. It solve a problem:
+\begin{align}
+\min_x & f(x)=\frac{1}{2}x^TGx+x^Tc \\
+subject & Ax \leq b
+\end{align}
+
+Usage:
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+\section{EQSystem - Solve nonlinear system of equations}

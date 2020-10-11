@@ -1,0 +1,52 @@
+\chapter{Utility}
+
+\section{EigenHelper}
+\subsection{slice\_by\_set - indexing a matrix by integer set}
+Giving a matrix \cd{mat} and a integer set \cd{is}, dimension indicator \cd{dim}. Return a matrix so that each column or row comes from \cd{mat} indicated by \cd{is}.
+
+\cd{dim=0} for select rows. \cd{dim=1} for select columns.
+
+\noindent Definition:
+\begin{lstlisting}
+template<typename SV, typename IDXT>
+SV slice_by_set(SV mat, IDXT is, int dim=0);
+\end{lstlisting}
+
+\cd{IDXT} is the type of set. It can be \cd{set<int>} or \cd{vector<int>}. It's very useful when you want to manipulate a subset of rows or columns.
+
+\noindent Example:
+\begin{lstlisting}
+set<int> s;
+s.emplace(1);
+s.emplace(2);
+s.emplace(0);
+
+MatrixXd m(5, 4);
+m.setRandom();
+
+cout << slice_by_set(m,s) << endl;
+cout << slice_by_set(m, vector<int>{ 0,1,2 }) << endl;
+\end{lstlisting}
+
+\section{FunctionCollection}
+\subsection{print\_stl - print values in a STL container}
+
+\noindent Definition:
+\begin{lstlisting}
+template<typename T>
+void print_stl(T& v);
+\end{lstlisting}
+
+\subsection{which - get indices of a value in a container}
+\noindent Definition:
+\begin{lstlisting}
+template<typename V, typename S>
+vector<int> which(const V& v, const S& val);
+\end{lstlisting}
+
+\subsection{set2vec - convert a set to vector}
+\noindent Definition:
+\begin{lstlisting}
+template<typename T>
+vector<T> set2vec(const set<T>& s);
+\end{lstlisting}

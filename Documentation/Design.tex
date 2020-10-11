@@ -1,0 +1,27 @@
+\chapter{Getting Started}
+SciStaEBD is a header only library and it has already contains a copy of another two header-only libraries: boost.math and Eigen3. First download at SciStaEBD on GitHub and then copy the internal folder "SciStaEBD" to your projects or complier's include directory.
+
+\chapter{Design Philosophy}
+\section{Goals}
+
+\section{Principles}
+
+
+\section{Programming Convention}
+
+\subsection{Template Arguments}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    Argument & Meaning \\
+    \midrule
+    \cd{S} & Scalar type such as \cd{double}. \\
+    \cd{V} & Eigen vector type such as \cd{VectorXd}. \\
+    \cd{M} & Eigen matrix type such as \cd{MatrixXd}.\\
+    \cd{SV} & Scalar or Vector.\\
+    \cd{XSV, YSV} & \cd{X} and \cd{Y} mean input and output respectively.\\
+    \bottomrule
+  \end{tabular}
+\end{table}

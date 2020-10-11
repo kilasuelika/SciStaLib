@@ -1,0 +1,34 @@
+\chapter{Mathematic Core Functions(MathCore)}
+\section{logistic() and logit()}
+\noindent Formula:
+
+$$logistic(x,x0,L,k)=\frac{L}{1+e^{-k(x-x0)}}$$
+$$logistic(x)=\frac{1}{1+e^{-x}}$$
+$$logit(x)=\ln(\frac{x}{1-x})$$
+
+\noindent Defination:
+\begin{lstlisting}
+template<typename T>
+inline T logistic(T x, T x0 , T L = 1, T k = 1);
+
+inline double logistic(double x);
+
+inline double logit(double x);
+\end{lstlisting}
+
+\section{softmax() and sigmoid()}
+\noindent Formula:
+
+$$softmax(\mathbf{x})=\frac{e^{x_i}}{\sum e^{x_k}}$$
+$$sigmoid(x_i)=\frac{1}{1+e^{-x_i}}$$
+
+One can see that sigmoid function is simply element-wise logistic function.
+
+\noindent Defination:
+\begin{lstlisting}
+template<typename EigenV>
+inline EigenV softmax(EigenV x);
+
+template<typename EigenV>
+inline EigenV sigmoid(EigenV x);
+\end{lstlisting}

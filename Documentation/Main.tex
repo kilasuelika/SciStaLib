@@ -1,0 +1,63 @@
+% !TeX spellcheck = en_US
+\documentclass[en, fancy,blue,11pt,table]{elegantbook}
+\usepackage{ctex}
+\usepackage{xcolor}
+\usepackage{mdframed}
+%\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+
+\def\arraystretch{1.5}
+\setlength\arrayrulewidth{1.1pt}
+
+\title{SciStaEBD Documentation}
+\subtitle{Elegant\LaTeX{} 经典之作}
+\author{ZhouYao}
+\institute{Elegant\LaTeX{} Program}
+\date{\today}
+\version{0.8}
+
+\extrainfo{Victory won\rq t come to us unless we go to it. --- M. Moore}
+
+\logo{logo.png}
+\cover{cover.jpg}
+
+%Differential operator.
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+%Circled number.
+\newcommand{\circled}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape = circle, draw, inner sep = 1pt]
+    (char) {\phantom{\ifblank{#1}{#2}{#1}}};%
+    \node at (char.center) {\makebox[0pt][c]{#2}};}}
+\robustify{\circled}
+%Code Highlight
+\newcommand{\cd}[1]{\tikz[baseline=(X.base)]\node [draw=gray!40,fill=gray!40,semithick,rectangle,inner sep=2pt, rounded corners=3pt] (X) {\texttt{#1}};}
+
+\begin{document}
+\lstset{language=C++}
+\maketitle
+\tableofcontents
+
+% \thispagestyle{empty}
+
+\mainmatter
+\hypersetup{pageanchor=true}
+
+\include{Design}
+
+\include{MathCore}
+
+\include{StatCore}
+
+\include{Solve}
+
+\include{Econ}
+
+\include{NParmStat}
+
+\include{Util}
+
+
+
+
+
+\end{document}
